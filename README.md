@@ -22,8 +22,8 @@ The planner helps track:
 - [x] Regular style 
 - [x] Sticky planner layout
 - [x] Fall theme Style
-- [] Dark Mode theme
-- [] Mobile responsiveness
+- [ ] Dark Mode theme
+- [ ] Mobile responsiveness
 
 
 ⚠️ **Disclaimer**: `style2.css` is AI generated code
