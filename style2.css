@@ -1,0 +1,219 @@
+/* ===== Pinterest-level Autumn Planner Theme ===== */
+
+/* --- Palette --- */
+:root {
+  --ink: #5a3f2e;         /* cocoa ink */
+  --border: #7a5a43;      /* warm brown */
+  --paper: #fff7ed;       /* cream paper */
+  --paper-2: #fff1e1;     /* warmer cream */
+  --header: #d6c2a1;      /* warm taupe */
+  --header-2: #cbb18b;    /* darker taupe */
+  --day-alt: rgba(90, 63, 46, 0.05);
+
+  --sk-bg: #f6d6c9;       /* soft peach */
+  --sk-label: #e9b7a5;    /* deeper peach */
+  --ex-bg: #dbe4d3;       /* sage beige */
+  --ex-label: #b8c7a6;    /* deeper sage */
+}
+
+/* --- Page vibe --- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 28px;
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(233,183,165,0.35), transparent 60%),
+    radial-gradient(900px 700px at 80% 15%, rgba(184,199,166,0.35), transparent 55%),
+    linear-gradient(180deg, var(--paper), var(--paper-2));
+}
+
+/* paper texture (CSS-only, subtle) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(90,63,46,0.03),
+      rgba(90,63,46,0.03) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  opacity: 0.35;
+}
+
+/* --- Heading --- */
+h1 {
+  margin: 0 0 16px 0;
+  text-align: center;
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  letter-spacing: 0.4px;
+  font-size: clamp(28px, 3vw, 40px);
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7);
+}
+
+/* --- Wrap enables horizontal scroll on small screens --- */
+.table-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 12px 28px rgba(90,63,46,0.15),
+    0 2px 8px rgba(90,63,46,0.10);
+  border: 1px solid rgba(122,90,67,0.25);
+  backdrop-filter: blur(6px);
+}
+
+/* --- Table base --- */
+table.planner {
+  width: 100%;
+  min-width: 980px; /* keeps columns readable */
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.35);
+}
+
+/* borders + spacing */
+.planner th,
+.planner td {
+  padding: 12px 12px;
+  vertical-align: top;
+  border-right: 1px solid rgba(122,90,67,0.35);
+  border-bottom: 1px solid rgba(122,90,67,0.35);
+  line-height: 1.35;
+  font-size: 14px;
+}
+
+/* remove extra borders on edges */
+.planner tr > *:last-child { border-right: none; }
+.planner tbody tr:last-child > * { border-bottom: none; }
+
+/* --- Sticky header --- */
+.planner thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: linear-gradient(180deg, var(--header), var(--header-2));
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: 0 2px 0 rgba(90,63,46,0.15);
+}
+
+/* rounded corners */
+.planner thead tr:first-child th:first-child { border-top-left-radius: 14px; }
+.planner thead tr:first-child th:last-child  { border-top-right-radius: 14px; }
+.planner tbody tr:last-child td:first-child,
+.planner tbody tr:last-child th:first-child  { border-bottom-left-radius: 14px; }
+.planner tbody tr:last-child td:last-child,
+.planner tbody tr:last-child th:last-child   { border-bottom-right-radius: 14px; }
+
+/* --- Sticky first columns (Category + Time) --- */
+.planner thead th:nth-child(1),
+.planner tbody th[scope="row"] {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+}
+
+/* "Time" column sticky too */
+.planner thead th:nth-child(2),
+.planner tbody td:first-child {
+  position: sticky;
+  left: 160px; /* must match Category column width below */
+  z-index: 3;
+}
+
+/* widths for sticky columns */
+.planner thead th:nth-child(1),
+.planner tbody th[scope="row"] {
+  width: 160px;
+  min-width: 160px;
+}
+
+.planner thead th:nth-child(2),
+.planner tbody td:first-child {
+  width: 170px;
+  min-width: 170px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.55);
+}
+
+/* ensure sticky columns don't become transparent over scroll */
+.planner tbody th[scope="row"] {
+  background: rgba(255,255,255,0.65);
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-size: 15px;
+}
+
+/* --- Alternating day column shading (Mon, Wed, Fri, Sun) --- */
+.planner tbody td:nth-child(3),
+.planner tbody td:nth-child(5),
+.planner tbody td:nth-child(7),
+.planner tbody td:nth-child(9) {
+  background-image: linear-gradient(0deg, var(--day-alt), var(--day-alt));
+}
+
+/* --- Row section colors --- */
+.skincare td,
+.skincare th {
+  background-color: rgba(246,214,201,0.55);
+}
+
+.skincare th[scope="row"] {
+  background: linear-gradient(180deg, rgba(233,183,165,0.95), rgba(233,183,165,0.75));
+}
+
+.exercise td,
+.exercise th {
+  background-color: rgba(219,228,211,0.55);
+}
+
+.exercise th[scope="row"] {
+  background: linear-gradient(180deg, rgba(184,199,166,0.95), rgba(184,199,166,0.75));
+}
+
+/* Make sticky "Time" column inherit section tint */
+.skincare td:first-child { background-color: rgba(246,214,201,0.75); }
+.exercise td:first-child { background-color: rgba(219,228,211,0.75); }
+
+/* --- Hover effects (Pinterest vibe) --- */
+.planner tbody tr {
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.planner tbody tr:hover {
+  box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.22);
+}
+
+.planner tbody td:hover {
+  outline: 2px solid rgba(90,63,46,0.22);
+  outline-offset: -2px;
+  border-radius: 10px;
+}
+
+/* --- Lists look cleaner --- */
+.planner ol {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.planner li {
+  margin: 2px 0;
+}
+
+/* Optional: make optional items look softer */
+.planner strong {
+  color: rgba(90,63,46,0.9);
+}
