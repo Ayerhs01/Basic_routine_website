@@ -62,10 +62,10 @@ h1 {
 
 /* --- Wrap enables horizontal scroll on small screens --- */
 .table-wrap {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   overflow: auto;
-  padding: 14px;
+  padding: 14px 18px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.45);
   box-shadow:
@@ -78,7 +78,7 @@ h1 {
 /* --- Table base --- */
 table.planner {
   width: 100%;
-  min-width: 980px; /* keeps columns readable */
+  min-width: 900px; /* keeps columns readable */
   border-collapse: separate;
   border-spacing: 0;
   overflow: hidden;
@@ -121,7 +121,7 @@ table.planner {
 .planner tbody tr:last-child td:last-child,
 .planner tbody tr:last-child th:last-child   { border-bottom-right-radius: 14px; }
 
-/* --- Sticky first columns (Category + Time) --- */
+/* --- Sticky first columns (Category + Section) --- */
 .planner thead th:nth-child(1),
 .planner tbody th[scope="row"] {
   position: sticky;
@@ -129,19 +129,19 @@ table.planner {
   z-index: 4;
 }
 
-/* "Time" column sticky too */
+/* "Section" column sticky too */
 .planner thead th:nth-child(2),
 .planner tbody td:first-child {
   position: sticky;
-  left: 160px; /* must match Category column width below */
+  left: 140px; /* must match Category column width below */
   z-index: 3;
 }
 
 /* widths for sticky columns */
 .planner thead th:nth-child(1),
 .planner tbody th[scope="row"] {
-  width: 160px;
-  min-width: 160px;
+  width: 140px;
+  min-width: 140px;
 }
 
 .planner thead th:nth-child(2),
@@ -186,7 +186,7 @@ table.planner {
   background: linear-gradient(180deg, rgba(184,199,166,0.95), rgba(184,199,166,0.75));
 }
 
-/* Make sticky "Time" column inherit section tint */
+/* Make sticky "Section" column inherit section tint */
 .skincare td:first-child { background-color: rgba(246,214,201,0.75); }
 .exercise td:first-child { background-color: rgba(219,228,211,0.75); }
 

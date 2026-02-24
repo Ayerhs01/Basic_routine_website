@@ -1,8 +1,10 @@
 # Weekly Routine
 
-This is a project for me to learn HTML and CSS. 
+## About
+This is a beginner project created to practice HTML and CSS styling. 
 
-It is a basic website that keeps track of everyday 
-skin care and exercise routines.
+The planner helps track:
+- Daily skin care routines
+- Weekly exercise routines
 
-**Disclaimer**: `style2.css` is AI generated code
+⚠️ **Disclaimer**: `style2.css` is AI generated code
