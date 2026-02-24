@@ -1,0 +1,50 @@
+body {
+  background: #fffaf3;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+th, td {
+    border: 1px solid #6b4f3a;
+    padding: 10px;
+    vertical-align: top;
+}
+
+thead th {
+    background-color: #d6c2a1;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: #6b4f3a;
+}
+
+ol {
+    margin: 0;
+    padding-left: 18px;
+}
+
+/*Skin care*/
+.skincare th,
+.skincare td {
+    background-color: #f6d6c9;
+}
+
+.skincare th[scope="row"] {
+    background:  #e9b7a5;
+}
+
+/*Exercise*/
+
+.exercise th,
+.exercise td {
+    background-color: #dbe4d3;
+}
+
+.exercise th[scope="row"] {
+    background:  #b8c7a6
+}
