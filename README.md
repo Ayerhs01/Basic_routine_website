@@ -4,6 +4,8 @@
 ![Planner Screenshot](./routine_preview.png)
 
 
+-----------------------------------------------------------------------
+
 ## About
 This is a beginner project created to practice HTML and CSS styling. 
 
@@ -12,10 +14,13 @@ The planner helps track:
 - Weekly exercise routines
 
 
+-----------------------------------------------------------------------
+
 ## Page
+https://ayerhs01.github.io/Basic_routine_website/
 
 
-
+-----------------------------------------------------------------------
 
 ## Progress
 - [x] Table structure
@@ -26,4 +31,10 @@ The planner helps track:
 - [ ] Mobile responsiveness
 
 
-⚠️ **Disclaimer**: `style2.css` is AI generated code
+-----------------------------------------------------------------------
+
+## ⚠️ **Disclaimer**
+`style2.css` is AI generated code
+
+
+-----------------------------------------------------------------------
