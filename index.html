@@ -1,12 +1,23 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>MY ROUTINE</title>
-            <link rel="stylesheet" href="./style2.css"
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>MY ROUTINE</title>            
+            <link rel="stylesheet" href="./style_fall.css">
+            
         </head>
 
         <body>
             <h1>Weekly Routine</h1>
+            
+            <!--Button that "JUMP" to today-->
+            <div class="toolbar">
+                <button id="jumpToday" type="button">Jump to Today</button>
+                <span class="hint">Tip: scroll sideways on mobile</span>
+            </div>
+
+
+        <!------------------------------------------------------------------------------->
             <div class="table-wrap">
                 <!-- This is a table for grid format calendar-->
                 <table class="planner">
@@ -14,15 +25,17 @@
                         <tr>
                             <th scope="col">Category</th>
                             <th scope="col">Sections</th>
-                            <th scope="col">Monday</th>
-                            <th scope="col">Tuesday</th>
-                            <th scope="col">Wednesday</th>
-                            <th scope="col">Thursday</th>
-                            <th scope="col">Friday</th>
-                            <th scope="col">Saturday</th>
-                            <th scope="col">Sunday</th>
+                            <th scope="col" id="mon">Monday</th>
+                            <th scope="col" id="tue">Tuesday</th>
+                            <th scope="col" id="wed">Wednesday</th>
+                            <th scope="col" id="thu">Thursday</th>
+                            <th scope="col" id="fri">Friday</th>
+                            <th scope="col" id="sat">Saturday</th>
+                            <th scope="col" id="sun">Sunday</th>
                         </tr>
                     </thead>
+
+                <!----------------------|SKINCARE MORNING|---------------------------------->
                     <tbody>    
                         <tr class="skincare">
                             <th scope="row" rowspan="2">Skin Care</th>
@@ -94,6 +107,8 @@
                                 </ol>
                             </td>
                         </tr>
+
+                    <!-----------------------|SKINCARE NIGHT|---------------------------------->
                         <tr class="skincare">
                             <td>Night</td>
                             <!--Monday Night-->
@@ -160,6 +175,8 @@
                                 </ol>
                             </td>
                         </tr>
+
+                    <!----------------------|EXERCISE|------------------------------------>
                         <tr class="exercise">
                             <th scope="row" rowspan="3">Exercise</th>
                             <td>Warm-up (5-min)</td>
@@ -210,6 +227,8 @@
                                 </ol>
                             </td>
                         </tr>
+                    
+                    <!------------------------------------------------------------------------------->
                         <tr class="exercise">
                             <td>Strength (2 rounds each)</td>
                             <!--Monday: leg-->
@@ -269,7 +288,7 @@
                                 </ol>
                             </td>
                         </tr>
-
+                    <!------------------------------------------------------------------------------->
                         <tr class="exercise">
                             <td>Core & Cooldown</td>
                             <!--Monday: leg-->
@@ -324,5 +343,37 @@
                     </tbody>
                 </table>
             </div>
+            <!--This code is AI generated-->
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const dayIds = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+                    const todayId = dayIds[new Date().getDay()];
+                    const th = document.getElementById(todayId);
+                    const table = document.querySelector("table.planner");
+
+                    if (!th || !table) return;
+
+                    // highlight today's header
+                    th.classList.add("is-today");
+
+                    const targetIndex = th.cellIndex; // correct "grid" column index
+
+                    // highlight the matching cell in every row (handles rowspan correctly)
+                    for (const row of table.tBodies[0].rows) {
+                    const match = [...row.cells].find((cell) => cell.cellIndex === targetIndex);
+                    if (match) match.classList.add("is-today");
+                    }
+
+                    // Jump button (optional)
+                    document.getElementById("jumpToday")?.addEventListener("click", () => {
+                    const wrap = document.querySelector(".table-wrap");
+                    if (!wrap) return;
+
+                    const targetLeft = th.getBoundingClientRect().left;
+                    const wrapLeft = wrap.getBoundingClientRect().left;
+                    wrap.scrollLeft += (targetLeft - wrapLeft) - 160;
+                    });
+                });
+            </script>
         </body>
     </html>
